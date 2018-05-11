@@ -55,6 +55,10 @@ export class Aws {
       if (aws.options.sessionToken) {
         env['AWS_SESSION_TOKEN'] = aws.options.sessionToken;
       }
+      
+      if (aws.options.awsCliLocation) {
+        execCommand = aws.options.awsCliLocation + execCommand;
+      }
 
       let execOptions = {
         cwd: aws.options.currentWorkingDirectory,
@@ -102,6 +106,7 @@ export class Options implements IOptions {
     public accessKey?: string,
     public secretKey?: string,
     public sessionToken?: string,
-    public currentWorkingDirectory?: string) { }
+    public currentWorkingDirectory?: string,
+    public awsCliLocation?: string) { }
 }
 
